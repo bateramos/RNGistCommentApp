@@ -1,5 +1,8 @@
 import { Buffer } from 'buffer/';
-const client_id = 'fa03c3dfe4d4c982ea97';
+
+import config from './../.env.json';
+
+const client_id = config.client_id;
 
 function logout(username, password) {
   const userAuth = Buffer(`${username}:${password}`).toString('base64');
@@ -45,7 +48,7 @@ function loginWithAuth(userAuth) {
     body: JSON.stringify({
       scopes : ['gist'],
       note : 'Gist Demo Comment',
-      client_secret : 'a030717a35f2776a4ff6743e4fdacef02fcd8a93'
+      client_secret : config.client_secret
     }),
     headers: {
       'Authorization' : `Basic ${userAuth}`,
